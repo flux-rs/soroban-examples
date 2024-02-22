@@ -1,3 +1,4 @@
+flux_rs::flux!(
 use crate::storage_types::{AllowanceDataKey, AllowanceValue, DataKey};
 use soroban_sdk::{Address, Env};
 
@@ -24,7 +25,7 @@ pub fn write_allowance(
     e: &Env,
     from: Address,
     spender: Address,
-    amount: i128,
+    amount: i128{v: v >= 0},
     expiration_ledger: u32,
 ) {
     let allowance = AllowanceValue {
@@ -63,3 +64,5 @@ pub fn spend_allowance(e: &Env, from: Address, spender: Address, amount: i128) {
         );
     }
 }
+
+);

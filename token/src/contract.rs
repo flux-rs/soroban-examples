@@ -1,3 +1,4 @@
+flux_rs::flux!(
 use crate::admin::{has_administrator, read_administrator, write_administrator};
 use crate::allowance::{read_allowance, spend_allowance, write_allowance};
 use crate::balance::{read_balance, receive_balance, spend_balance};
@@ -10,7 +11,9 @@ use soroban_sdk::{contract, contractimpl, Address, Env, String};
 use soroban_token_sdk::metadata::TokenMetadata;
 use soroban_token_sdk::TokenUtils;
 
-fn check_nonnegative_amount(amount: i128) {
+fn check_nonnegative_amount(amount: i128)
+ensures amount >= 0
+{
     if amount < 0 {
         panic!("negative amount is not allowed: {}", amount)
     }
@@ -172,3 +175,5 @@ impl token::Interface for Token {
         read_symbol(&e)
     }
 }
+
+);

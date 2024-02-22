@@ -1,3 +1,4 @@
+flux_rs::flux!(
 use soroban_sdk::{contracttype, Address};
 
 pub(crate) const DAY_IN_LEDGERS: u32 = 17280;
@@ -16,7 +17,7 @@ pub struct AllowanceDataKey {
 
 #[contracttype]
 pub struct AllowanceValue {
-    pub amount: i128,
+    pub amount: i128{v: v >= 0},
     pub expiration_ledger: u32,
 }
 
@@ -29,3 +30,11 @@ pub enum DataKey {
     State(Address),
     Admin,
 }
+
+#[derive(Clone)]
+#[contracttype]
+pub struct Balance {
+    pub amount: i128{v: v >= 0},
+}
+
+);
