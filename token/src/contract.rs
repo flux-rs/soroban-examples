@@ -1,5 +1,3 @@
-//! This contract demonstrates a sample implementation of the Soroban token
-//! interface.
 use crate::admin::{has_administrator, read_administrator, write_administrator};
 use crate::allowance::{read_allowance, spend_allowance, write_allowance};
 use crate::balance::{read_balance, receive_balance, spend_balance};

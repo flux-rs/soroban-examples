@@ -2,3 +2,5 @@ target/
 /.sccache/
 .DS_Store
 .soroban
+.liquid
+.vscode
